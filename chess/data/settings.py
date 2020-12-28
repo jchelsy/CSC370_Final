@@ -1,4 +1,14 @@
+__all__ = ['TILE_SIZE', 'SCREEN_WIDTH', 'SCREEN_HEIGHT', 'BOARD_SIZE', 'BOARD_X', 'BOARD_Y', 'IMG_SCALE',
+           'WHITE', 'BLACK', 'SMALL_TEXT_COLOR', 'LARGE_TEXT_COLOR', 'BG_COLOR', 'BG_COLOR_LIGHT',
+           'TILE_COLOR_LIGHT', 'TILE_COLOR_DARK', 'HIGHLIGHT_COLOR', 'FONT', 'BIG_FONT', 'SCREEN', 'to_coords']
+
 import pygame
+import pygame_menu
+
+# Fonts
+pygame.font.init()
+FONT = pygame.font.Font(pygame_menu.font.FONT_OPEN_SANS_BOLD, 18)
+BIG_FONT = pygame.font.Font(pygame_menu.font.FONT_OPEN_SANS_BOLD, 26)
 
 # Screen components
 TILE_SIZE = 64
@@ -28,12 +38,12 @@ HIGHLIGHT_COLOR = (51, 153, 255)    # Light Blue
 SCREEN = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
 
-def to_coords(x, y):
+def to_coords(x: int, y: int) -> tuple:
     """Converts 8x8 grid positions to pixel coordinates
 
     :param x: x-axis coordinate
     :param y: y-axis coordinate
-    :return: pixel coordinates (int)
+    :return: pixel coordinates
     """
 
     return BOARD_X + x * TILE_SIZE, BOARD_Y + y * TILE_SIZE
